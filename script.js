@@ -3,6 +3,13 @@ const buttontdl = document.querySelector('.buttoninput')
 const listtdl = document.querySelector('.todolist')
 const dateinput=document.querySelector('.dateInput')
 const timeinput=document.querySelector('.timeInput')
+const counter=document.querySelector('#para')
+
+
+let count_of_goals=0;
+counter.innerHTML=`Total Number of Goals = ${count_of_goals}`;
+
+
 function clickButton(e) {
     e.preventDefault()
     addTodo()
@@ -37,6 +44,8 @@ function addTodo() {
     inputtdl.value = '';
     dateinput.value='';
     timeinput.value='';
+    counter.innerHTML=`Total Number of Goals = ${++count_of_goals}`;
+
 }
 
 // checking and delete todoList 
@@ -54,8 +63,19 @@ function okdel(e) {
     if (item.classList[0] === 'trash-button') {
         const todolist = item.parentElement
         todolist.remove()
+        counter.innerHTML=`Total Number of Goals = ${--count_of_goals}`
     }
 }
 
 buttontdl.addEventListener('click', clickButton)
 listtdl.addEventListener('click', okdel)
+
+
+var cc=document.getElementById("counter_c");
+var pp=document.getElementById("para");
+let count=0
+function clicking(){
+    ++count;
+    pp.innerText=`Number of Clicks= ${count}`;
+};
+cc.addEventListener("click",clicking);
